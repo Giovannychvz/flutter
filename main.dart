@@ -16,6 +16,14 @@ void main() {
   runApp(MyApp());
 }
 
+//SHA1: 0B:68:06:01:EF:CD:34:79:59:E6:95:75:16:3C:5C:14:F0:28:52:99
+
+/*
+MD5: 8E:47:F2:33:39:C6:29:0A:A3:D6:F6:1B:42:9E:2D:75
+SHA1: 0B:68:06:01:EF:CD:34:79:59:E6:95:75:16:3C:5C:14:F0:28:52:99
+SHA256: 3E:B3:89:24:9D:62:42:BE:05:06:7F:74:8A:40:BB:7E:13:F6:E9:7B:40:43:31:D0:58:F1:97:C0:C5:94:18:BA
+*/
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -27,7 +35,7 @@ class MyApp extends StatelessWidget {
         //primarySwatch: Colors.yellow,
         primaryColor: Colors.yellow[800],
       ),
-      home: MyHomePage(title: 'OK'),
+      home: MyHomePage(title: 'RETO SAN JOSE CHAPARRAL'),
     );
   }
 }
@@ -142,6 +150,54 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
+                  /*new Divider(),
+                  new ListTile(
+                    title: new Text(
+                      'TIENDA',
+                      style: TextStyle(color: Colors.black, fontSize: 25),
+                    ),
+                    trailing: new Icon(
+                      Icons.home,
+                      size: 30.0,
+                      color: Colors.red,
+                    ),
+                    onTap: () =>
+                        Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context) => OtraPagina(),
+                    )),
+                  ),*/
+                  /*new Divider(),
+                  new ListTile(
+                    title: new Text(
+                      'Cupones',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: new Icon(
+                      Icons.card_giftcard,
+                      size: 30.0,
+                      color: Colors.white,
+                    ),
+                    onTap: () =>
+                        Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context) => OtraPagina(),
+                    )),
+                  ),*/
+                  /* new Divider(),
+                  new ListTile(
+                    title: new Text(
+                      'Tiendas',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: new Icon(
+                      Icons.place,
+                      size: 30.0,
+                      color: Colors.white,
+                    ),
+                    onTap: () =>
+                        Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context) => OtraPagina(),
+                    )),
+                  ),*/
                   new Divider(),
                   new ListTile(
                     title: new Text(
@@ -158,6 +214,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       builder: (BuildContext context) => CrearProductos(),
                     )),
                   ),
+                  /*  new Divider(),
+                  new ListTile(
+                    title: new Text(
+                      'QR Code',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: new FaIcon(
+                      FontAwesomeIcons.qrcode,
+                      color: Colors.white,
+                      size: 30.0,
+                    ),
+                    onTap: () =>
+                        Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context) => OtraPagina(),
+                    )),
+                  ),*/
                   new Divider(),
                 ],
               ),
@@ -230,91 +302,31 @@ class _MyHomePageState extends State<MyHomePage> {
                       itemBuilder: (context, index) {
                         final String imagen = _productosModel[index].image;
                         var item = _productosModel[index];
-                        return Card(
-                            elevation: 4.0,
-                            child: Stack(
-                              fit: StackFit.loose,
-                              alignment: Alignment.center,
-                              children: <Widget>[
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: CachedNetworkImage(
-
-// THIS IS THE IMAGE I NEED TO LOOK BIG WHEN I CLICK
-                                          imageUrl:
-                                              '${_productosModel[index].image}' +
-                                                  '?alt=media',
-                                          fit: BoxFit.cover,
-                                          placeholder: (_, __) {
-                                            return Center(
-                                                child:
-                                                    CupertinoActivityIndicator(
-                                              radius: 15,
-                                            ));
-                                          }),
-                                    ),
-                                    Text(
-                                      '${_productosModel[index].name}',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 20.0),
-                                    ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 25,
-                                        ),
-                                        Text(
-                                          '${_productosModel[index].price.toString()}COP',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20.0,
-                                              color: Colors.black),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                            right: 8.0,
-                                            bottom: 8.0,
-                                          ),
-                                          child: Align(
-                                            alignment: Alignment.bottomRight,
-                                            child: GestureDetector(
-                                              child: (!_listaCarro
-                                                      .contains(item))
-                                                  ? Icon(
-                                                      Icons.shopping_cart,
-                                                      color: Colors.yellow[800],
-                                                      size: 38,
-                                                    )
-                                                  : Icon(
-                                                      Icons.shopping_cart,
-                                                      color: Colors.red,
-                                                      size: 38,
-                                                    ),
-                                              onTap: () {
-                                                setState(() {
-                                                  if (!_listaCarro
-                                                      .contains(item))
-                                                    _listaCarro.add(item);
-                                                  else
-                                                    _listaCarro.remove(item);
-                                                });
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ));
+                        return InkWell(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => ImageScreen(
+                                url: '${_productosModel[index].image}' +
+                                    '?alt=media',
+                              ),
+                            ),
+                          ),
+                          child: Expanded(
+                            child: CachedNetworkImage(
+                              imageUrl: '${_productosModel[index].image}' +
+                                  '?alt=media',
+                              fit: BoxFit.cover,
+                              placeholder: (_, __) {
+                                return Center(
+                                  child: CupertinoActivityIndicator(
+                                    radius: 15,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        );
                       },
                     )),
               ],
